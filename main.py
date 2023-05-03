@@ -1,6 +1,8 @@
 import uvicorn
 from fastapi import FastAPI
 
+from src.routes import auth
+
 app = FastAPI()
 
 
@@ -14,5 +16,11 @@ async def root():
     return {'message': 'Hello Oleksii Latypov'}
 
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8000)
+app.include_router(auth.router, prefix='/api')
+#app.include_router(contacts.router, prefix='/api')
+
+if __name__ == '__main__':
+    uvicorn.run(app="main:app", reload=True)
+
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="localhost", port=8000)
