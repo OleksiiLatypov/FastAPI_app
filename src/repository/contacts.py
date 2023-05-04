@@ -72,5 +72,4 @@ async def searcher(part_to_search: str, db: Session):
     return contact_list
 
 
-if __name__ == '__main__':
-    print(asyncio.run(searcher('r', database)))
+
