@@ -15,6 +15,7 @@ port = config.get('DB', 'PORT')
 
 SQLALCHEMY_DATABASE_URL = f'postgresql://{username}:{password}@{domain}:{port}/{db_name}'
 
+
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -27,5 +28,5 @@ def get_db():
         db.close()
 
 
-if __name__ == '__main__':
-    print(get_db())
+# if __name__ == '__main__':
+#     print(get_db())
