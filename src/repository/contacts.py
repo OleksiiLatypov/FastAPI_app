@@ -1,3 +1,4 @@
+import asyncio
 from datetime import datetime, timedelta, date
 
 from sqlalchemy import and_
@@ -57,18 +58,37 @@ async def birthday_list(db: Session):
     return list_of_contacts
 
 
-async def searcher(part_to_search: str, db: Session):
-    contact_list = []
-    contacts_all = db.query(Contact).all()
-    for contact in contacts_all:
-        if part_to_search.lower() in contact.name.lower() and contact not in contact_list:
-            contact_list.append(contact)
-        if part_to_search.lower() in contact.surname.lower() and contact not in contact_list:
-            contact_list.append(contact)
-        if part_to_search.lower() in contact.email.lower() and contact not in contact_list:
-            contact_list.append(contact)
-
-    return contact_list
-
+async def search_contact(search_word: str, db: Session):
+    result = []
+    all_contacts = db.query(Contact).all()
+    for contact in all_contacts:
+        if search_word in contact.name:
+            result.append(contact)
+        if search_word in contact.surname:
+            result.append(contact)
+        if search_word in contact.email:
+            result.append(contact)
+    return result
 
 
+
+
+"""
+    result = []
+    if find_item:
+        contacts_f_name = db.query(Contact).filter(and_(Contact.user_id == current_user,
+                                                        Contact.first_name.like(f'%{find_item}%'))).all()
+        if contacts_f_name:
+            result.extend(contacts_f_name)
+
+        contacts_l_name = db.query(Contact).filter(and_(Contact.user_id == current_user,
+                                                        Contact.last_name.like(f'%{find_item}%'))).all()
+        if contacts_l_name:
+            result.extend(contacts_l_name)
+
+        contacts_email = db.query(Contact).filter(and_(Contact.user_id == current_user,
+                                                       Contact.email.like(f'%{find_item}%'))).all()
+        if contacts_email:
+            result.extend(contacts_email)
+        result = list(set(result))
+    return result"""
