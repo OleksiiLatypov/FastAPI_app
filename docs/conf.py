@@ -11,8 +11,8 @@ sys.path.append(os.path.abspath('..'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Homework_14'
-copyright = '2023, Oleksii LAtypov'
-author = 'Oleksii LAtypov'
+copyright = '2023, Oleksii Latypov'
+author = 'Oleksii Latypov'
 release = '15.05.2023'
 
 # -- General configuration ---------------------------------------------------
