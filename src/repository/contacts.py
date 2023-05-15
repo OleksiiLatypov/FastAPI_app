@@ -12,6 +12,14 @@ database = SessionLocal()
 
 
 async def get_contacts(user: User, db: Session):
+    """
+    The get_contacts function returns a list of contacts for the user with the given id.
+
+
+    :param user: User: Get the user id from the database
+    :param db: Session: Pass the database session to the function
+    :return: A list of contacts
+    """
     contacts = db.query(Contact).filter(and_(Contact.user_id == user.id)).all()
     return contacts
 
@@ -69,8 +77,6 @@ async def search_contact(search_word: str, db: Session):
         if search_word in contact.email:
             result.append(contact)
     return result
-
-
 
 
 """
