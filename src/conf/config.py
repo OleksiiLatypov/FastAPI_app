@@ -12,9 +12,9 @@ class Settings(BaseSettings):
     mail_server: str = "smpt.meta.ua"
     redis_host: str = 'localhost'
     redis_port: int = 6379
-    cloudinary_name: str 
-    cloudinary_api_key: int
-    cloudinary_api_secret: str
+    cloudinary_name: str  = 'name'
+    cloudinary_api_key: int = 123456789
+    cloudinary_api_secret: str = 'name'
 
     class Config:
         env_file = ".env"
