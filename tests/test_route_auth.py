@@ -49,16 +49,6 @@ def test_login_user(client, user, session):
     assert data["token_type"] == "bearer"
 
 
-@pytest.fixture
-def test_login_user(client, user):
-    response = client.post(
-        "/api/auth/login",
-        data={"username": user.get('email'), "password": 'password'},
-    )
-    assert response.status_code == 401, response.text
-    data = response.json()
-    assert data["detail"] == "Invalid password"
-
 
 @pytest.fixture
 def test_login_wrong_password(client, user):
