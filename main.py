@@ -37,7 +37,7 @@ async def check():
 
 @app.get('/')
 async def root():
-    return {'message': 'Hello Oleksii Latypov'}
+    return {'message': 'FastAPI ContactBook'}
 
 
 app.include_router(auth.router, prefix='/api')
