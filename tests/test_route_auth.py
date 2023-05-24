@@ -25,7 +25,7 @@ def test_repeat_create_user(client, user):
         "/api/auth/signup",
         json=user,
     )
-    assert response.status_code == 401, response.text
+    assert response.status_code == 409, response.text
     data = response.json()
     assert data["detail"] == "Account already exists!"
 
